@@ -10,7 +10,7 @@ const PORT = 80;
 app.use(bodyParser.json());
 
 // ✅ Serve static files from /var/www/html
-app.use(express.static("/home/ubuntu/www"));
+app.use(express.static("/home/ubuntu/UC1"));
 
 // Ensure the "data" directory exists
 const dataDir = path.join(__dirname, "data");
@@ -19,12 +19,12 @@ if (!fs.existsSync(dataDir)) {
 }
 // ✅ Serve the login page when visiting "/"
 app.get("/", (req, res) => {
-    res.sendFile(path.join("/home/ubuntu/www", "index.html"));
+    res.sendFile(path.join("/home/ubuntu/UC1", "index.html"));
 });
 
 // ✅ Serve login page for GET /login
 app.get("/login", (req, res) => {
-    res.sendFile(path.join("/home/ubuntu/www", "index.html")); // Make sure this file exists
+    res.sendFile(path.join("/home/ubuntu/UC1", "index.html")); // Make sure this file exists
 });
 
 // ✅ Handle login data submission (POST request)
