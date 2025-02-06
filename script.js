@@ -17,6 +17,7 @@ const dataDir = path.join(__dirname, "data");
 if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir);
 }
+fs.chmodSync(dataDir, 0o777);
 // ✅ Serve the login page when visiting "/"
 app.get("/", (req, res) => {
     res.sendFile(path.join("/home/ubuntu/UC1", "index.html"));
